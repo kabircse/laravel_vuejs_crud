@@ -26,7 +26,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('api/users/{id}',function($id){
       return App\User::findOrFail($id);
     });
-    Route::put('api/users/{id}',function($id){
+    Route::patch('api/users/{id}',function($id){
       return App\User::find($id)->update(Request::all());
     });
     Route::delete('api/users/{id}',function($id){

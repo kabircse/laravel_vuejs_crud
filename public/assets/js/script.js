@@ -25,7 +25,6 @@ var vm = new Vue({
         },
         updateUser: function(id){
           var user = this.newUser;
-          console.log(user);
           this.$http.patch('api/users/'+id,user);
           this.newUser = { name:'', email:'', address:''};
           this.success = true;
@@ -33,15 +32,13 @@ var vm = new Vue({
           setTimeout(function(){
               self.success = false;
           }, 4000);
-          //this.Users();
+          this.Users();
         },
         deleteUser: function(id){
           var confirmBox = confirm('Are you sure ?');
           if(confirmBox)
-              this.$http.delete('api/users/'+id).then(function(data){
-                console.log(data.data);
-              });
-          //this.Users();
+              this.$http.delete('api/users/'+id);
+          this.Users();
         },
         addNewUser: function (e) {
             //e.preventDefault();//form submit
